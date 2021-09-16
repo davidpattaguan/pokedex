@@ -15,7 +15,7 @@ const Card = ({ id, name, sprite }) => {
     ".png";
 
   return (
-    <div className="shadow-lg rounded border overflow-hidden font-mono">
+    <div className="shadow-lg rounded border overflow-hidden font-mono animate-fade-in-down">
       <div className="rounded">
         <img
           src={pokemonImageUrl}
