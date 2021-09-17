@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../utilities/Card";
+import { lazy, Suspense } from "react";
 
 const PokemonListItems = ({ id, name, sprite }) => {
   return (
