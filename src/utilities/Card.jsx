@@ -1,7 +1,20 @@
 import React from "react";
+import Modal from "../utilities/Modal";
 import { useState } from "react";
 
-const Card = ({ id, name, openModalHandler }) => {
+const Card = ({ id, name, sprite, height, weight, stats }) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  //OPEN MODAL
+  let openModalHandler = () => {
+    setOpenModal(true);
+  };
+
+  //CLOSE MODAL
+  let closeModalHandler = () => {
+    setOpenModal(false);
+  };
+
   let pad = (number, length) => {
     let str = "" + number;
     while (str.length < length) {
@@ -38,6 +51,18 @@ const Card = ({ id, name, openModalHandler }) => {
           </button>
         </div>
       </div>
+
+      {openModal && (
+        <Modal
+          pokemonName={name}
+          pokemonDescription={sprite}
+          pokemonImageUrl={pokemonImageUrl}
+          height={height}
+          weight={weight}
+          closeModalHandler={closeModalHandler}
+          stats={stats}
+        />
+      )}
     </div>
   );
 };

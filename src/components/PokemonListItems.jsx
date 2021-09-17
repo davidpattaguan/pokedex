@@ -6,11 +6,20 @@ import { useState } from "react";
 
 const Card = lazy(() => import("../utilities/Card"));
 
-const PokemonListItems = ({ id, name, sprite }) => {
+const PokemonListItems = ({ pokemon }) => {
   return (
     <div>
-      <Suspense fallback={<Loading />}>
-        <Card id={id} name={name} sprite={sprite} />
+      <Suspense
+        fallback={<Loading type={"spin"} delay={100} color={"#EF4444"} />}
+      >
+        <Card
+          key={pokemon.id}
+          id={pokemon.id}
+          name={pokemon.name}
+          height={pokemon.height}
+          weight={pokemon.weight}
+          stats={pokemon.base_experience}
+        />
       </Suspense>
     </div>
   );

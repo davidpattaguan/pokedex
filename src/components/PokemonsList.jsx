@@ -2,17 +2,22 @@ import React from "react";
 import PokemonListItems from "./PokemonListItems";
 import { useState } from "react";
 
-import Modal from "../utilities/Modal";
-
 const PokemonsList = ({ pokemons }) => {
   const [searchPoke, setSearchPoke] = useState("");
+  // const [openModal, setOpenModal] = useState(false);
+  // const [pokemonName, setPokemonName] = useState("");
 
-  const [openModal, setOpenModal] = useState(false);
+  // //OPEN MODAL
+  // let openModalHandler = () => {
+  //   setOpenModal(true);
+  // };
 
-  let openModalHandler = () => {
-    setOpenModal(true);
-  };
+  // //CLOSE MODAL
+  // let closeModalHandler = () => {
+  //   setOpenModal(false);
+  // };
 
+  //SEARCHING
   const handleSearch = (event) => {
     setSearchPoke(event);
   };
@@ -24,8 +29,6 @@ const PokemonsList = ({ pokemons }) => {
   }
   return (
     <div className>
-      {openModal && <Modal />}
-
       <div className="mx-20 mb-5">
         <input
           type="text"
@@ -34,14 +37,10 @@ const PokemonsList = ({ pokemons }) => {
           onChange={(event) => handleSearch(event.target.value)}
         />
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mx-20">
         {pokemons.map((pokemon) => (
-          <PokemonListItems
-            key={pokemon.id}
-            id={pokemon.id}
-            name={pokemon.name}
-            sprite={pokemon.sprite}
-          />
+          <PokemonListItems pokemon={pokemon} />
         ))}
       </div>
     </div>
