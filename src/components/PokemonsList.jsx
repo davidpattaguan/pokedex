@@ -1,10 +1,17 @@
 import React from "react";
 import PokemonListItems from "./PokemonListItems";
-
 import { useState } from "react";
+
+import Modal from "../utilities/Modal";
 
 const PokemonsList = ({ pokemons }) => {
   const [searchPoke, setSearchPoke] = useState("");
+
+  const [openModal, setOpenModal] = useState(false);
+
+  let openModalHandler = () => {
+    setOpenModal(true);
+  };
 
   const handleSearch = (event) => {
     setSearchPoke(event);
@@ -17,6 +24,8 @@ const PokemonsList = ({ pokemons }) => {
   }
   return (
     <div className>
+      {openModal && <Modal />}
+
       <div className="mx-20 mb-5">
         <input
           type="text"
