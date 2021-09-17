@@ -8,7 +8,9 @@ const Card = lazy(() => import("../utilities/Card"));
 const PokemonListItems = ({ id, name, sprite }) => {
   return (
     <div>
-      <Suspense fallback={<Loading />}>
+      <Suspense
+        fallback={<Loading type={"spin"} delay={100} color={"#EF4444"} />}
+      >
         <Card id={id} name={name} sprite={sprite} />
       </Suspense>
     </div>
